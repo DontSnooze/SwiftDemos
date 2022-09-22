@@ -3,6 +3,10 @@ on: [push]
 jobs:
   Explore-GitHub-Actions:
     runs-on: self-hosted
+    environment: ios-development
+    env:
+      MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+      LKEY_PASS: ${{ secrets.LKEY_PASS }}
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -14,4 +18,8 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      - run: echo "Starting build..."
+      # - run: security unlock-keychain -p ${{ secrets.LKEY_PASS }} /Users/amostodman/Library/Keychains/login.keychain-db
+      - run: bundle install
+      - run: bundle exec fastlane beta
       - run: echo "🍏 This job's status is ${{ job.status }}."
