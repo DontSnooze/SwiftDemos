@@ -18,11 +18,14 @@ default_platform(:ios)
 platform :ios do
   desc "Build App"
   lane :beta do
-    setup_ci
+    # setup_ci
 
     match(
-      type: "development", 
-      readonly: true
+      type: "development",
+      readonly: true,
+      git_basic_authorization: ENV["MATCH_GIT_BASIC_AUTHORIZATION"],
+      keychain_name: "fastlane.keychain",
+      keychain_password: ENV["FASTLANE_KEYCHAIN_PASSWORD"]
     )
 
     update_code_signing_settings(
@@ -36,6 +39,34 @@ platform :ios do
       export_method: "development",
       export_team_id: "3BT7A38RRX",
       clean: true
+    )
+  end
+
+  desc "Update App Screenshots"
+  lane :update_screenshots do
+    derived_data_path = 'build/derived_data/snapshots'
+    scan(
+      clean: true,
+      build_for_testing: true,
+      derived_data_path: derived_data_path,
+      scheme: "SwiftDemosUITests"
+    )
+    snapshot(
+      skip_open_summary: true,
+      test_without_building: true,
+      derived_data_path: derived_data_path
+    )
+  end
+
+  desc "Create keychain"
+  lane :keychain do
+    create_keychain(
+      name:"fastlane.keychain",
+      password:ENV["FASTLANE_KEYCHAIN_PASSWORD"],
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      lock_when_sleeps: false
     )
   end
 end

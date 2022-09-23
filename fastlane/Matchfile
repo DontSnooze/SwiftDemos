@@ -1,4 +1,4 @@
-git_url("git@github.com:DontSnooze/ds-certificates.git")
+git_url("https://github.com/DontSnooze/ds-certificates.git")
 
 storage_mode("git")
 

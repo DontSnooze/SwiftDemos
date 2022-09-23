@@ -21,9 +21,11 @@ struct RecursiveTreeSearchView: View {
                     .padding()
                     .border(.secondary)
                     .padding(.top, -10)
+                    .accessibilityIdentifier("IndexEntryTextField")
             }.padding()
             
             Text("Result: \(viewModel.searchResult())")
+                .accessibilityIdentifier("ResultLabel")
             
             List {
                 Section(header: Text("Node Data Structure - Root Node")) {

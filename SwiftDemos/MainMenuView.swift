@@ -43,6 +43,10 @@ struct MainMenuView: View {
     }
 }
 
+func getA() {
+    let a = "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".data(using: .utf8)?.base64EncodedString()
+    print("\(String(describing: a))")
+}
 struct MainMenuView_Previews: PreviewProvider {
     static var previews: some View {
         MainMenuView(viewModel: MainMenuView.ViewModel())

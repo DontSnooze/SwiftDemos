@@ -15,14 +15,6 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## iOS
 
-### ios custom_lane
-
-```sh
-[bundle exec] fastlane ios custom_lane
-```
-
-Description of what the lane does
-
 ### ios beta
 
 ```sh
@@ -30,6 +22,22 @@ Description of what the lane does
 ```
 
 Build App
+
+### ios update_screenshots
+
+```sh
+[bundle exec] fastlane ios update_screenshots
+```
+
+Update App Screenshots
+
+### ios keychain
+
+```sh
+[bundle exec] fastlane ios keychain
+```
+
+Create keychain
 
 ----
 

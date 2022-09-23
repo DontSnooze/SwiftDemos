@@ -2,11 +2,15 @@ name: GitHub Actions Demo
 on: [push]
 jobs:
   Explore-GitHub-Actions:
-    runs-on: self-hosted
+    # runs-on: self-hosted
+    runs-on: macos-latest
     environment: ios-development
     env:
       MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
       LKEY_PASS: ${{ secrets.LKEY_PASS }}
+      MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+      FASTLANE_KEYCHAIN_PASSWORD: ${{ secrets.FASTLANE_KEYCHAIN_PASSWORD }}
+      FASTLANE_EXPLICIT_OPEN_SIMULATOR: "1"
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -18,8 +22,18 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - run: echo "Starting build..."
-      # - run: security unlock-keychain -p ${{ secrets.LKEY_PASS }} /Users/amostodman/Library/Keychains/login.keychain-db
       - run: bundle install
-      - run: bundle exec fastlane beta
+      - name: Create keychain
+        run: bundle exec fastlane keychain
+      - name: Creating build
+        run: bundle exec fastlane beta
+      - name: Update snapshots
+        run: bundle exec fastlane update_screenshots
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: screenshots
+          path: |
+            screenshots/
+          retention-days: 15
       - run: echo "🍏 This job's status is ${{ job.status }}."
