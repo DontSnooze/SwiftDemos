@@ -24,7 +24,7 @@ class SwiftDemosTests: XCTestCase {
         (0 ..< 5).forEach({ _ in
             let index = Int.random(in: 1 ... 10)
             
-            guard let node = viewModel.findNodeWithIndex(index, in: viewModel.rootNode) else {
+            guard let node = viewModel.rootNode.findNodeWithIndex(index: index) else {
                 XCTFail("Node was nil")
                 return
             }

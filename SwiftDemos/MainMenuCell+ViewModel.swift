@@ -9,6 +9,8 @@ import SwiftUI
 
 extension MainMenuCell {
     struct ViewModel {
+        var row: TableRow
+        
         enum TableRow: String, Identifiable {
             var id: Self { self }
             case recipes = "Recipes Demo"
@@ -27,7 +29,5 @@ extension MainMenuCell {
                 return result
             }
         }
-        
-        var row: TableRow
     }
 }

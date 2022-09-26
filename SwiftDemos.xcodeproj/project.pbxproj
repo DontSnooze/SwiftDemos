@@ -139,7 +139,6 @@
 				9C448D2228340CE600D91AFB /* MainMenuView+ViewModel.swift */,
 				9C448D1C283407D300D91AFB /* MainMenuCell.swift */,
 				9C448D1E283407FF00D91AFB /* MainMenuCell+ViewModel.swift */,
-				DC49953C284053C10074E300 /* BasicImageView.swift */,
 				DC499531283EB0450074E300 /* RecursiveTreeSearch */,
 				DC49952C283EAF8F0074E300 /* Recipes */,
 				9C448CF52834043D00D91AFB /* Assets.xcassets */,
@@ -205,6 +204,7 @@
 				DC499534283ED9360074E300 /* Node.swift */,
 				DC499536283EEC6A0074E300 /* NodeCell.swift */,
 				DC49953A283EEC890074E300 /* NodeCell+ViewModel.swift */,
+				DC49953C284053C10074E300 /* BasicImageView.swift */,
 			);
 			path = RecursiveTreeSearch;
 			sourceTree = "<group>";

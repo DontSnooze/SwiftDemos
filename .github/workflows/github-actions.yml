@@ -30,11 +30,29 @@ jobs:
         run: bundle exec fastlane keychain
       - name: Run unit tests
         run: bundle exec fastlane unit_tests
+      - name: Run UI tests
+        run: bundle exec fastlane ui_tests
+      - name: Archive test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: test_results
+          path: |
+            test_results
+            ui_test_results
+          retention-days: 15
       - name: Build and codesign
         run: bundle exec fastlane beta
-      - name: Update snapshots
+      - name: Archive app build
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: |
+            builds/
+          retention-days: 15
+      - name: Update app screenshots
         run: bundle exec fastlane update_screenshots
-      - uses: actions/upload-artifact@v3
+      - name: Archive screenshots
+        uses: actions/upload-artifact@v3
         if: always()
         with:
           name: screenshots
