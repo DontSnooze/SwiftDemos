@@ -24,10 +24,13 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - run: bundle install
+      - name: Setup
+        run: bundle install
       - name: Create keychain
         run: bundle exec fastlane keychain
-      - name: Creating build
+      - name: Run unit tests
+        run: bundle exec fastlane unit_tests
+      - name: Build and codesign
         run: bundle exec fastlane beta
       - name: Update snapshots
         run: bundle exec fastlane update_screenshots
