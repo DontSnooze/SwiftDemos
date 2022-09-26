@@ -19,7 +19,18 @@ platform :ios do
   desc "Run Unit Tests"
   lane :unit_tests do
     run_tests(
-      scheme:"SwiftDemosTests"
+      scheme:"SwiftDemosTests",
+      output_directory: "./test_results",
+      output_types: "html"
+    )
+  end
+
+  desc "Run UI Tests"
+  lane :ui_tests do
+    run_tests(
+      scheme:"SwiftDemosUITests",
+      output_directory: "./ui_test_results",
+      output_types: "html"
     )
   end
 
@@ -38,12 +49,18 @@ platform :ios do
       team_id: "3BT7A38RRX"
     )
 
+    commit = last_git_commit
+    short_hash = commit[:abbreviated_commit_hash]
+
     build_app(
       scheme: "SwiftDemos",
       configuration: "Debug",
+      output_directory: "./builds",
+      output_name: "SwiftDemos-#{short_hash}.ipa",
       export_method: "development",
       export_team_id: "3BT7A38RRX",
-      clean: true
+      clean: true,
+      silent: true
     )
   end
 

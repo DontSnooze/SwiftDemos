@@ -44,8 +44,7 @@ class Node: ObservableObject, Identifiable {
         node9.nodes = [node10]
         
         node7.nodes = [node8, node9]
-        
-        
+
         let nodes: [Node] = [
             node1,
             node4,
@@ -56,19 +55,19 @@ class Node: ObservableObject, Identifiable {
         return node
     }
     
-    func nodeWithIndex(_ index: Int, in node: Node) -> Node? {
-        print("node.name: \(node.name)")
+    func findNodeWithIndex(index nodeIndex: Int) -> Node? {
+        print("node.name: \(name)")
         
-        if node.index == index {
-            return node
+        if index == nodeIndex {
+            return self
         }
         
-        for thisNode in node.nodes ?? [Node]() {
+        for thisNode in nodes ?? [Node]() {
             print("in loop: thisNode.name: \(thisNode.name)")
-            let index = nodeWithIndex(index, in: thisNode)
+            let resultNode = thisNode.findNodeWithIndex(index: nodeIndex)
             
-            if let index = index {
-                return index
+            if let resultNode = resultNode {
+                return resultNode
             } else {
                 continue
             }
