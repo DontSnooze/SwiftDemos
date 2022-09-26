@@ -51,13 +51,4 @@ final class RecursiveTreeSearchViewTests: XCTestCase {
         XCTAssertTrue(menu.treeSearchCell.waitForExistence(timeout: 10))
         menu.treeSearchCell.tap()
     }
-
-    func notestLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
 }
