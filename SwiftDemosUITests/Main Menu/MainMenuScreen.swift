@@ -9,5 +9,5 @@ import Foundation
 import XCTest
 
 class MainMenuScreen {
-    let treeSearchCell = XCUIApplication.app.tables.staticTexts["Recursive Tree Search"]
+    let treeSearchCell = XCUIApplication.app.collectionViews.staticTexts["Recursive Tree Search"]
 }
