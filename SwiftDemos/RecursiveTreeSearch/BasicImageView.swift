@@ -21,7 +21,6 @@ struct BasicImageView_Previews: PreviewProvider {
     }
 }
 
-
 struct PhotoDetailView: UIViewRepresentable {
     let image: UIImage
 

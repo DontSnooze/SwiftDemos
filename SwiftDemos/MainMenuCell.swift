@@ -32,6 +32,6 @@ struct MainMenuCell: View {
 
 struct MainMenuCell_Previews: PreviewProvider {
     static var previews: some View {
-        MainMenuCell(viewModel: MainMenuCell.ViewModel(row: .recipes))
+        MainMenuCell(viewModel: MainMenuCell.ViewModel(row: .employees))
     }
 }

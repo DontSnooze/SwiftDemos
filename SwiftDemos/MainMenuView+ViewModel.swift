@@ -10,10 +10,10 @@ import Foundation
 extension MainMenuView {
     class ViewModel: ObservableObject {
         var title = "Swift Demos"
-        @Published var shouldShowRecipesView = false
+        @Published var shouldShowEmployeesView = false
         @Published var shouldShowRecursiveTreeSearchView = false
         var tableRows: [MainMenuCell.ViewModel.TableRow] = [
-            .recipes,
+            .employees,
             .recursiveTreeSearch
         ]
     }

@@ -13,17 +13,17 @@ extension MainMenuCell {
         
         enum TableRow: String, Identifiable {
             var id: Self { self }
-            case recipes = "Recipes Demo"
-            case recursiveTreeSearch = "Recursive Tree Search"
+            case employees = "Employees Swift/SwiftUI and Codable Demo"
+            case recursiveTreeSearch = "Swift/SwiftUI Recursive Tree Search"
             
             func description() -> String {
                 var result = ""
                 
                 switch self {
-                case .recipes:
-                    result = "Swift UI Demo - Recipes"
+                case .employees:
+                    result = "SwiftUI Demo of populating some fake Employee data from an online REST API using Codable"
                 case .recursiveTreeSearch:
-                    result = "Tree Data Structure search using Recursive Functions"
+                    result = "Tree Data Structure search using Recursive Functions, Swift and SwiftUI"
                 }
                 
                 return result

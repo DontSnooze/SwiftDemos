@@ -15,9 +15,9 @@ struct MainMenuView: View {
             VStack(alignment: .leading) {
                 List(viewModel.tableRows) { row in
                     switch row {
-                    case .recipes:
+                    case .employees:
                         MainMenuCell(viewModel: MainMenuCell.ViewModel(row: row)).onTapGesture {
-                            viewModel.shouldShowRecipesView = true
+                            viewModel.shouldShowEmployeesView = true
                         }
                     case .recursiveTreeSearch:
                         MainMenuCell(viewModel: MainMenuCell.ViewModel(row: row)).onTapGesture {
@@ -26,7 +26,7 @@ struct MainMenuView: View {
                     }
                 }
 
-                NavigationLink(destination: RecipesView(viewModel: RecipesView.ViewModel()), isActive: $viewModel.shouldShowRecipesView) {
+                NavigationLink(destination: EmployeesView(viewModel: EmployeesView.ViewModel()), isActive: $viewModel.shouldShowEmployeesView) {
                     EmptyView()
                 }
                 let model = RecursiveTreeSearchView.ViewModel()
