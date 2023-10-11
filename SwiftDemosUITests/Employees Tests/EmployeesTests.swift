@@ -27,11 +27,13 @@ final class EmployeesTests: XCTestCase {
     }
     
     func testfirstCellExists() throws {
+        sleep(10)
         XCTAssertTrue(employeesScreen.firstCell.waitForExistence(timeout: 10))
         snapshot("03Employees")
     }
     
     func testLastCellExists() throws {
+        sleep(10)
         app.swipeUp()
         app.swipeUp()
         XCTAssertTrue(employeesScreen.lastCell.waitForExistence(timeout: 10))
