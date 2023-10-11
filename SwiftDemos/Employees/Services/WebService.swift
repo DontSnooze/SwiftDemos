@@ -28,4 +28,18 @@ class WebService {
         
         return result
     }
+    
+    func loadJson<T: Decodable>(filename fileName: String, parse: (Data) -> T?) throws -> T {
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
+            throw NetworkError.badRequest
+        }
+        
+        let data = try Data(contentsOf: url)
+
+        guard let result = parse(data) else {
+            throw NetworkError.decodingError
+        }
+        
+        return result
+    }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainMenuView: View {
     @ObservedObject var viewModel: ViewModel
+    var isForTesting = false
     
     var body: some View {
         NavigationView {
@@ -26,7 +27,7 @@ struct MainMenuView: View {
                     }
                 }
 
-                NavigationLink(destination: EmployeesView(viewModel: EmployeesView.ViewModel()), isActive: $viewModel.shouldShowEmployeesView) {
+                NavigationLink(destination: EmployeesView(viewModel: EmployeesView.ViewModel(), isForTesting: isForTesting), isActive: $viewModel.shouldShowEmployeesView) {
                     EmptyView()
                 }
                 let model = RecursiveTreeSearchView.ViewModel()

@@ -20,6 +20,7 @@ struct ImageHelper {
                 if let image = phase.image {
 //                    image // Displays the loaded image.
                     image.resizable()
+                    
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: width, maxHeight: height)
                 } else if phase.error != nil {

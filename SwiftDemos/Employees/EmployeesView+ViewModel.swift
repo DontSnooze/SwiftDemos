@@ -24,5 +24,16 @@ extension EmployeesView {
                 print("\(error.localizedDescription)")
             }
         }
+        
+        func populateEmployeesFromJSONFile(filename: String) {
+            do {
+                let response = try WebService().loadJson(filename: filename) { data in
+                                    return try? JSONDecoder().decode([Employee].self, from: data)
+                                }
+                self.employees = response
+            } catch {
+                print("\(error.localizedDescription)")
+            }
+        }
     }
 }
