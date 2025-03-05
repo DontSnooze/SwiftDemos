@@ -1,4 +1,8 @@
+# Use for CICD
 git_url("https://github.com/DontSnooze/ds-certificates.git")
+
+# if running local use this instead
+# git_url("git@github.com:DontSnooze/ds-certificates.git")
 
 storage_mode("git")
 
