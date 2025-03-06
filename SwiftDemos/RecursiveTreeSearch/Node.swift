@@ -56,14 +56,14 @@ class Node: ObservableObject, Identifiable {
     }
     
     func findNodeWithIndex(index nodeIndex: Int) -> Node? {
-        print("node.name: \(name)")
+        // print("node.name: \(name)")
         
         if index == nodeIndex {
             return self
         }
         
         for thisNode in nodes ?? [Node]() {
-            print("in loop: thisNode.name: \(thisNode.name)")
+            // print("in loop: thisNode.name: \(thisNode.name)")
             let resultNode = thisNode.findNodeWithIndex(index: nodeIndex)
             
             if let resultNode = resultNode {
